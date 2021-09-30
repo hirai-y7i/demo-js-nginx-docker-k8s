@@ -73,8 +73,8 @@ jobs:
           echo "--- for deploy ---"
           ls -R deploy/
           echo "--- replace fetched CD repo manifest and redirect to CI repo manifest ---"
-          sed -e "s/IMAGE\:TAG/${{ secrets.DOCKER_USERNAME }}\/${{ secrets.DOCKER_REPONAME }}\:${{ github.sha }}/" deploy/manifests/deployment.yaml > deploy/k8s/bl.yml
-          cat deploy/k8s/bl.yml
+          sed -e "s/IMAGE\:TAG/${{ secrets.DOCKER_USERNAME }}\/${{ secrets.DOCKER_REPONAME }}\:${{ github.sha }}/" deploy/manifests/deployment.yaml > deploy/childapp-alice/blue-deployment.yaml
+          cat deploy/childapp-alice/blue-deployment.yaml
       -
         name: Commit the changes and push to repo for deploy of ArgoCD
         env:
