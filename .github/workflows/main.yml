@@ -87,4 +87,4 @@ jobs:
           git add .
           git commit -m "Add changes" -a
           git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
-          git push --force --quiet "https://${{ secrets.GIT_USERNAME_DEPLOY }}:${{ secrets.GIT_PASSWORD_DEPLOY }}@${{ env.DEPLOY_URL_DOMAIN }}/${{ secrets.GIT_USERNAME_DEPLOY }}/${{ secrets.GIT_REPONAME_DEPLOY }}/" master:master
+          git push --force --quiet "https://${{ secrets.GIT_USERNAME_DEPLOY }}:${{ secrets.GIT_PASSWORD_DEPLOY }}@${{ env.DEPLOY_URL_DOMAIN }}/${{ secrets.GIT_USERNAME_DEPLOY }}/${{ secrets.GIT_REPONAME_DEPLOY }}/" main:main
