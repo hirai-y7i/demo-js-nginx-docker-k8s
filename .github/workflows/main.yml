@@ -88,4 +88,5 @@ jobs:
           git commit -m "Added changes from CI - GitHub Actions" -a
           git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
           git remote set-url origin https://${{ secrets.GIT_USERNAME_DEPLOY }}:${{ secrets.GIT_PAT_DEPLOY }}@github.com/${{ secrets.GIT_USERNAME_DEPLOY }}/${{ env.DEPLOY_URL_DOMAIN }}.git
-          git push --force --quiet main:main
+          git remote -vv
+          git push --force --quiet origin main:main
