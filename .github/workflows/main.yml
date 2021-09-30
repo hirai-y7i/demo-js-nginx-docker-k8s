@@ -73,7 +73,7 @@ jobs:
           echo "--- for deploy ---"
           ls deploy/
           echo "--- replace ---"
-          sed -e "s/IMAGE\:TAG/${{ secrets.DOCKER_USERNAME }}\/${{ secrets.DOCKER_REPONAME }}\:${{ github.sha }}/" deploy/manifests/deployment.yml > deploy/childapp-alice/blue-deployment.yaml
+          sed -e "s/IMAGE\:TAG/${{ secrets.DOCKER_USERNAME }}\/${{ secrets.DOCKER_REPONAME }}\:${{ github.sha }}/" deploy/manifests/deployment.yaml > deploy/childapp-alice/blue-deployment.yaml
           cat deploy/childapp-alice/blue-deployment.yaml
       -
         name: Commit the changes and push to repo for deploy of ArgoCD
