@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -87,4 +87,5 @@ jobs:
           git add .
           git commit -m "Added changes from CI - GitHub Actions" -a
           git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
-          git push --force --quiet "https://${{ secrets.GIT_USERNAME_DEPLOY }}:${{ secrets.GIT_PASSWORD_DEPLOY }}@${{ env.DEPLOY_URL_DOMAIN }}/${{ secrets.GIT_USERNAME_DEPLOY }}/${{ secrets.GIT_REPONAME_DEPLOY }}/" main:main
+          git remote set-url origin https://${{ secrets.GIT_USERNAME_DEPLOY }}:${{ secrets.GIT_PAT_DEPLOY }}@github.com/${{ secrets.GIT_USERNAME_DEPLOY }}/${{ env.DEPLOY_URL_DOMAIN }}.git
+          git push --force --quiet main:main
